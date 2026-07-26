@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Tania | Festive Collection 2024</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Inter:wght@200;300;400&amp;display=swap" rel="stylesheet">
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luxury-black': '#0a0a0a',
+                        'luxury-white': '#fcfcfc',
+                        'luxury-grey': '#e5e5e5',
+                        'luxury-charcoal': '#1a1a1a',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        '0.3em': '0.3em',
+                        '0.2em': '0.2em',
+                    },
+                    transitionTimingFunction: {
+                        'custom-zoom': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom "no-scrollbar" utility */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Custom image zoom */
+        .img-zoom-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .img-zoom {
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-zoom-container:hover .img-zoom {
+            transform: scale(1.05);
+        }
+        
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+    </style>
+
+    <!-- GSAP for Motion Design -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="bg-luxury-white text-luxury-black font-sans antialiased selection:bg-luxury-black selection:text-white">
+
+    <!-- LAYER STACK: Nav fixed z-50 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-luxury-white/70 h-20 flex items-center justify-between px-6 md:px-12">
+        <div class="flex-1 flex gap-8 text-sm tracking-[0.2em] uppercase font-light hidden md:flex">
+            <a href="categories.html" class="hover:opacity-60 transition-opacity">Collections</a>
+            <a href="men.html" class="hover:opacity-60 transition-opacity">Men</a>
+            <a href="women.html" class="hover:opacity-60 transition-opacity">Women</a>
+        </div>
+        
+        <!-- Logo -->
+        <a href="index.html" class="absolute left-1/2 transform -translate-x-1/2 text-3xl md:text-4xl font-serif hover:opacity-80 transition-opacity">
+            House of Tania
+        </a>
+        
+        <div class="flex-1 flex justify-end gap-6 md:gap-8 items-center text-sm tracking-[0.2em] uppercase font-light">
+            <a href="profile.html" class="hidden md:block hover:opacity-60 transition-opacity">Account</a>
+            <a href="#" class="hidden md:block hover:opacity-60 transition-opacity">Search</a>
+            <a href="cart.html" class="relative hover:opacity-60 transition-opacity block">
+                <iconify-icon icon="lucide:shopping-bag" class="text-xl"></iconify-icon>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-luxury-black rounded-full animate-ping"></span>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-luxury-black rounded-full"></span>
+            </a>
+            <button class="md:hidden">
+                <iconify-icon icon="lucide:menu" class="text-2xl"></iconify-icon>
+            </button>
+        </div>
+    </nav>
+
+    
+<main class="max-w-[1920px] mx-auto pt-32 pb-24 min-h-screen px-6 md:px-12">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="font-serif text-4xl mb-4">Checkout</h1>
+        <div class="font-sans text-xs tracking-[0.2em] uppercase text-luxury-black/50 mb-12 flex gap-2">
+            <span>Information</span> > <span class="text-luxury-black font-medium">Shipping</span> > <span>Payment</span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-serif text-2xl mb-6">Shipping Address</h2>
+                <form class="space-y-6 font-sans">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="First Name" class="w-full border-b border-luxury-grey py-3 focus:outline-none focus:border-luxury-black bg-transparent">
+                        <input type="text" placeholder="Last Name" class="w-full border-b border-luxury-grey py-3 focus:outline-none focus:border-luxury-black bg-transparent">
+                    </div>
+                    <input type="text" placeholder="Address" class="w-full border-b border-luxury-grey py-3 focus:outline-none focus:border-luxury-black bg-transparent">
+                    <input type="text" placeholder="Apartment, suite, etc." class="w-full border-b border-luxury-grey py-3 focus:outline-none focus:border-luxury-black bg-transparent">
+                    <div class="grid grid-cols-3 gap-4">
+                        <input type="text" placeholder="City" class="col-span-1 border-b border-luxury-grey py-3 focus:outline-none focus:border-luxury-black bg-transparent">
+                        <input type="text" placeholder="State" class="col-span-1 border-b border-luxury-grey py-3 focus:outline-none focus:border-luxury-black bg-transparent">
+                        <input type="text" placeholder="ZIP" class="col-span-1 border-b border-luxury-grey py-3 focus:outline-none focus:border-luxury-black bg-transparent">
+                    </div>
+                    <button type="button" class="mt-8 bg-luxury-black text-white px-8 py-4 text-sm tracking-[0.2em] uppercase w-full hover:bg-luxury-black/80 transition-colors">Continue to Payment</button>
+                </form>
+            </div>
+            
+            <div class="bg-luxury-grey/10 p-8 h-fit">
+                <div class="flex gap-4 mb-6 border-b border-luxury-grey pb-6">
+                    <div class="w-16 h-20 bg-luxury-grey relative">
+                        <img src="/images/lehenga.png" class="w-full h-full object-cover">
+                        <span class="absolute -top-2 -right-2 w-5 h-5 bg-luxury-black text-white rounded-full flex items-center justify-center text-xs">1</span>
+                    </div>
+                    <div>
+                        <h4 class="font-serif">Zari Embroidered Lehenga</h4>
+                        <p class="font-sans text-xs text-luxury-black/50">$2,500</p>
+                    </div>
+                </div>
+                <div class="flex justify-between font-medium font-sans border-t border-luxury-grey pt-6">
+                    <span>Total</span>
+                    <span>$2,500</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="bg-luxury-black text-white px-6 md:px-12 py-16 border-t border-white/10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 max-w-[1920px] mx-auto">
+            <div class="col-span-1 md:col-span-1">
+                <h3 class="font-serif text-2xl mb-6">House of Tania</h3>
+                <p class="font-sans text-xs text-white/50 leading-relaxed max-w-xs">
+                    Redefining modern luxury through silence, form, and exceptional craftsmanship.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-sans text-xs tracking-[0.2em] uppercase mb-6 text-white/50">Explore</h4>
+                <ul class="flex flex-col gap-4 font-sans text-sm">
+                    <li><a href="shop.html" class="hover:opacity-70 transition-opacity">Shop All</a></li>
+                    <li><a href="shop.html" class="hover:opacity-70 transition-opacity">Collections</a></li>
+                    <li><a href="#" class="hover:opacity-70 transition-opacity">The Atelier</a></li>
+                    <li><a href="#" class="hover:opacity-70 transition-opacity">Journal</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-sans text-xs tracking-[0.2em] uppercase mb-6 text-white/50">Client Services</h4>
+                <ul class="flex flex-col gap-4 font-sans text-sm">
+                    <li><a href="#" class="hover:opacity-70 transition-opacity">Contact Us</a></li>
+                    <li><a href="#" class="hover:opacity-70 transition-opacity">Shipping &amp; Returns</a></li>
+                    <li><a href="#" class="hover:opacity-70 transition-opacity">Care Guide</a></li>
+                    <li><a href="#" class="hover:opacity-70 transition-opacity">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-sans text-xs tracking-[0.2em] uppercase mb-6 text-white/50">Connect</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:opacity-70 transition-opacity">
+                        <iconify-icon icon="lucide:instagram" class="text-xl"></iconify-icon>
+                    </a>
+                    <a href="#" class="hover:opacity-70 transition-opacity">
+                        <iconify-icon icon="lucide:twitter" class="text-xl"></iconify-icon>
+                    </a>
+                    <a href="#" class="hover:opacity-70 transition-opacity">
+                        <iconify-icon icon="lucide:facebook" class="text-xl"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-sans text-white/30">
+            <p>© 2024 House of Tania. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Create Master Timeline for Hero
+            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+            // 1. Ken Burns Effect (Slow continuous scale down over 10 seconds)
+            gsap.to(".gsap-hero-bg", {
+                scale: 1,
+                duration: 10,
+                ease: "power1.inOut"
+            });
+
+            // 2. Reveal Subtitle
+            tl.to(".gsap-hero-text", {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                delay: 0.2
+            })
+            // 3. Stagger reveal title words (sliding up from mask)
+            .to(".gsap-hero-word", {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "expo.out"
+            }, "-=0.8")
+            // 4. Reveal Button
+            .to(".gsap-hero-btn", {
+                y: 0,
+                opacity: 1,
+                duration: 1
+            }, "-=0.8")
+            // 5. Reveal Scroll Line
+            .to(".gsap-hero-line", {
+                scaleY: 1,
+                opacity: 1,
+                duration: 1,
+                transformOrigin: "bottom center"
+            }, "-=0.6");
+
+            // Parallax effect on scroll for Hero
+            gsap.to(".gsap-hero-bg", {
+                yPercent: 30,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "section",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+            
+            
+            // Fade up effect for philosophy section
+            gsap.from("section:nth-of-type(2) h2", {
+                y: 50,
+                opacity: 0,
+                duration: 1.5,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: "section:nth-of-type(2)",
+                    start: "top 80%"
+                }
+            });
+
+            // Featured Products Header Animation
+            gsap.to(".gsap-featured-header", {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#featured-products",
+                    start: "top 80%"
+                }
+            });
+
+            // Staggered reveal for featured product cards
+            gsap.to(".gsap-featured-card", {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#featured-products",
+                    start: "top 70%"
+                }
+            });
+
+        });
+    </script>
+    </body></html>
