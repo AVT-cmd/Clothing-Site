@@ -335,3 +335,25 @@ const shippingMain = `
 fs.writeFileSync('shipping.html', headPart + shippingMain + footerPart);
 
 console.log('All mockup pages generated successfully.');
+
+// Vercel output fix: Copy everything to 'dist' so Vercel finds the output directory
+if (!fs.existsSync('dist')) {
+    fs.mkdirSync('dist');
+}
+
+const filesToCopy = ['index.html', 'men.html', 'women.html', 'categories.html', 'profile.html', 'cart.html', 'shipping.html', 'shop.html', 'success.html'];
+for (const file of filesToCopy) {
+    if (fs.existsSync(file)) {
+        fs.copyFileSync(file, `dist/${file}`);
+    }
+}
+
+if (!fs.existsSync('dist/images')) {
+    fs.mkdirSync('dist/images', { recursive: true });
+}
+const images = fs.readdirSync('images');
+for (const img of images) {
+    fs.copyFileSync(`images/${img}`, `dist/images/${img}`);
+}
+
+console.log('Copied files to dist/ for Vercel deployment.');
